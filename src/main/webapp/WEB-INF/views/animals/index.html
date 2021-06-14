@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Zoo</title>
+    <link rel="stylesheet" href="css/animalsStyle.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            position: relative;
+            width: 1920px;
+            height: 1755px;
+            background: #FBFBFB;
+            padding: 0;
+            margin: 0;
+        }
+        header{
+            position: absolute;
+            width: 1920px;
+            height: 94px;
+            left: 0px;
+            top: 0px;
+
+            background: #FFFFFF;
+            box-shadow: 0px 4px 8px rgba(44, 101, 77, 0.08);
+        }
+        .logo1 {
+            position: absolute;
+            width: 59px;
+            height: 42px;
+            left: 149px;
+            top: 16px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 42px;
+            color: #333333;
+        }
+        .logo2 {
+            position: absolute;
+            width: 58px;
+            height: 21px;
+            left: 150px;
+            top: 49px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.08em;
+            color: #333333;
+        }
+        .about {
+            position: absolute;
+            width: 43px;
+            height: 19px;
+            left: 694px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+            text-decoration: underline;
+            pointer-events: none;
+        }
+        .zoos {
+            position: absolute;
+            width: 36px;
+            height: 19px;
+            left: 881px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+        }
+        .contacts {
+            position: absolute;
+            width: 95px;
+            height: 19px;
+            left: 1039px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+        }
+        .new {
+            position: absolute;
+            width: 95px;
+            height: 19px;
+            left: 1261px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+        }
+        li {
+            list-style-type: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .zoo {
+            position: absolute;
+            width: 1920px;
+            height: 715px;
+            left: 0px;
+            top: 94px;
+        }
+        .sideBar {
+            width: 200px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            margin-top: 8px;
+            margin-left: 25px;
+        }
+        .scroll {
+            width: 200px;
+        }
+
+        footer {
+            position: absolute;
+            width: 1920px;
+            height: 751px;
+            left: 0px;
+            top: 1004px;
+            background: #333333;
+        }
+        .footLogo1 {
+            position: absolute;
+            width: 59px;
+            height: 42px;
+            left: 150px;
+            top: 90px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 42px;
+            color: #FEFEFE;
+        }
+        .footLogo2 {
+            position: absolute;
+            width: 58px;
+            height: 21px;
+            left: 151px;
+            top: 123px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.08em;
+            color: #FEFEFE;
+        }
+        .contactUs {
+            position: absolute;
+            width: 97px;
+            height: 23px;
+            left: 151px;
+            top: 211px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 23px;
+            color: #FEFEFE;
+        }
+        .name {
+            position: absolute;
+            width: 383px;
+            height: 34px;
+            left: 151px;
+            top: 259px;
+            padding-left: 0px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #E0E0E0;
+            background: #333333;
+            border: none;
+            border-bottom: 1px solid #BDBDBD;
+        }
+        .email {
+            position: absolute;
+            width: 383px;
+            height: 34px;
+            left: 151px;
+            top: 305px;
+            padding-left: 0px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #E0E0E0;
+            background: #333333;
+
+            border: none;
+            border-bottom: 1px solid #BDBDBD;
+        }
+        ::placeholder {
+            color: #E0E0E0;
+        }
+        .footAbout {
+            position: absolute;
+            width: 43px;
+            height: 19px;
+            left: 975px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .footZoos {
+            position: absolute;
+            width: 36px;
+            height: 119px;
+            left: 1091px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .footMap {
+            position: absolute;
+            width: 32px;
+            height: 19px;
+            left: 1200px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .footDesign {
+            position: absolute;
+            width: 50px;
+            height: 19px;
+            left: 1305px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .volunteers {
+            position: absolute;
+            width: 275px;
+            height: 55px;
+            left: 1495px;
+            top: 99px;
+            cursor: pointer;
+            background: linear-gradient(106.89deg, #4BD8B5 -14.32%, #49D6DF 100.68%);
+            border-radius: 3px;
+            border: none;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+        .volunteers:hover {
+            background: linear-gradient(106.89deg, #4BD8B5 100.68%, #49D6DF -14.32%);
+        }
+        .onlineCenter {
+            position: absolute;
+            width: 136px;
+            height: 16px;
+            left: 975px;
+            top: 211px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 16px;
+            text-transform: uppercase;
+            color: #FEFEFE;
+        }
+        address {
+            position: absolute;
+            width: 173px;
+            height: 16px;
+            left: 975px;
+            top: 262px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .time {
+            position: absolute;
+            width: 190px;
+            height: 16px;
+            left: 975px;
+            top: 283px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .tel {
+            position: absolute;
+            width: 104px;
+            height: 16px;
+            left: 975px;
+            top: 319px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .mail {
+            position: absolute;
+            width: 143px;
+            height: 16px;
+            left: 975px;
+            top: 340px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .instagram2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 975px;
+            top: 376px;
+        }
+        .twitter2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 1010px;
+            top: 378px;
+        }
+        .vk2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 1045px;
+            top: 380px;
+        }
+        .youtube2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 1080px;
+            top: 379px;
+        }
+        fieldset {
+            position: absolute;
+            width: 383px;
+            height: 121px;
+            left: 149px;
+            top: 362px;
+
+            border: 1px solid #BDBDBD;
+            box-sizing: border-box;
+            border-radius: 3px;
+        }
+        legend {
+            margin-left: -7px;
+            padding-right: 6px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+
+            color: #BDBDBD;
+        }
+        textarea {
+            position: absolute;
+            left: 0px;
+            top: -1px;
+            width: 381px;
+            height: 105px;
+            background: #333333;
+            border: none;
+            resize: none;
+        }
+        textarea:focus
+        {
+            outline: none;
+            color: #FEFEFE;
+        }
+        .check1 {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            left: 148px;
+            top: 506px;
+            cursor: pointer;
+        }
+
+        .checkLabel {
+            position: absolute;
+            width: 224px;
+            height: 14px;
+            left: 171px;
+            top: 508px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            color: #BDBDBD;
+            cursor: pointer;
+        }
+        .submit {
+            position: absolute;
+            left: 404px;
+            top: 542px;
+            text-decoration: none;
+            border: none;
+            background: #333333;
+            cursor: pointer;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+
+            /* base */
+
+            color: #FEFEFE;
+
+        }
+        .submitArrow {
+            margin-top: 0px;
+            padding-left: 20px;
+        }
+        .footerLine {
+            position: absolute;
+            width: 1620.04px;
+            height: 0px;
+            left: 152px;
+            top: 618px;
+            border: 0.5px solid #FEFEFE;
+        }
+        .noora {
+            position: absolute;
+            width: 103px;
+            height: 14px;
+            left: 151px;
+            top: 646px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            color: #BDBDBD;
+        }
+        .rsschool {
+            position: absolute;
+            width: 193px;
+            height: 14px;
+            left: 152px;
+            top: 665px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            color: #BDBDBD;
+        }
+        .geogrMap {
+            position: absolute;
+            left: 394px;    /*  +34 */
+            top: 235px;     /*  -353 */
+        }
+        .eagleMark {
+            position: absolute;
+            left: 526px;
+            top: 317px;
+        }
+        .eagleAvatar {
+            position: absolute;
+            left: 538px;
+            top: 330px;
+            width: 43px;
+            height: 43px;
+        }
+        .crocoMark {
+            position: absolute;
+            left: 639px;
+            top: 337px;
+        }
+        .crocoAvatar{
+            position: absolute;
+            left: 651px;
+            top: 350px;
+            width: 43px;
+            height: 43px;
+        }
+        .gorillaMark {
+            position: absolute;
+            left: 966px;
+            top: 424px;
+        }
+        .gorillaAvatar {
+            position: absolute;
+            left: 977px;
+            top: 437px;
+            width: 43px;
+            height: 43px;
+        }
+        .pandaMark {
+            position: absolute;
+            left: 1298px;
+            top: 333px;
+        }
+        .pandaAvatar {
+            position: absolute;
+            left: 1310px;
+            top: 345px;
+            width: 43px;
+            height: 43px;
+        }
+        .lionMark {
+            position: absolute;
+            left: 1028px;
+            top: 496px;
+        }
+        .lionAvatar {
+            position: absolute;
+            left: 1040px;
+            top: 507px;
+            width: 43px;
+            height: 43px;
+        }
+        .welcom {
+            position: absolute;
+            width: 790px;
+            height: 56px;
+            left: 566px;
+            top: 115px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 56px;
+            text-align: center;
+            color: #333333;
+        }
+        .animal {
+            width: 137px;
+            height: 137px;
+            left: 36px;
+            display: flex;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <a href="http://localhost:8080/animals">
+            <div class="logo1">zoo</div>
+            <div class="logo2">online</div>
+        </a>
+        <ul class="headMenu">
+            <li><a class="about" href="file:///D:/RS-SCHOOL/online-zoo/index.html">Animals</a></li>
+            <li><a class="zoos" href="#">Zoos</a></li>
+            <li><a class="contacts" href="#contacts">Contact Us</a></li>
+            <li><a class="new" href="/animals/new">Create new</a></li>
+        </ul>
+    </div>
+</header>
+<!-- ZOO -->
+<div class="zoo">
+    <div class="welcom">Welcome to Online Zoo</div>
+    <div class="zoo_container">
+        <div class="sideBar">
+            <div class="scroll">
+                <div th:each="animal : ${animals}">
+                    <a th:href="@{/animals/{animalId}(animalId=${animal.getAnimalId()})}">
+                        <div th:title="${animal.getAnimalName()}" class="pandaScroll">
+                            <img class="animal" th:src="${animal.getImagePath()}" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img class="geogrMap" src="https://psv4.userapi.com/c532036/u176748061/docs/d2/570e64e360ad/map.png?extra=McTZslQCkI3IjtMiH3oz3ae01ZOZBlonA0TTb-NAekg_Jnp3ZBa6CurHLD9OSs0BjX9kN_BGKN0PRNXGOcl8FDbxf1tzpH_d-QwWYHhz2C4sk2jxBrR5qQIHupU19tQl2s8WihcQxBQds37MPIkvJ8Le" alt="">
+            <div class="eagleOnMap">
+                <img class="eagleMark" src="https://psv4.userapi.com/c536132/u176748061/docs/d41/20c2761e8674/mapMark.png?extra=W3pct3stQRWp9cXYAdHR7RoWGQykGwkjFLbc33g2PjNfmuBEHa6kgvr8iRmt0hvFHbCbXGV_6v0KmiKAePIpNSwdHUXo8C8rP_NM8GJC5-xqvb6URdvUBWoImPDZDitzQl8GcyvCx8oqlrpaFp0XCzqV" alt="">
+                <img class="eagleAvatar" src="https://psv4.userapi.com/c534536/u176748061/docs/d9/2efb333d4328/Ellipse_46.png?extra=fq9Zc_GX8BmZDG2AkR6LjGmUQ4i1zpzvOkMMUrwIwEK9CDfjsSyPyW2W36eGbObFtk7RHvBO3ByI3O2TyxlHZEJKbJiJtxbk3k6QyTEp4jSQb0sL64dsseoG3ZZ1dtCrH-6v3rpSBWB2qcbfR-nOLiKu" alt="">
+            </div>
+            <div class="crocoOnMap">
+                <img class="crocoMark" src="https://psv4.userapi.com/c536132/u176748061/docs/d41/20c2761e8674/mapMark.png?extra=W3pct3stQRWp9cXYAdHR7RoWGQykGwkjFLbc33g2PjNfmuBEHa6kgvr8iRmt0hvFHbCbXGV_6v0KmiKAePIpNSwdHUXo8C8rP_NM8GJC5-xqvb6URdvUBWoImPDZDitzQl8GcyvCx8oqlrpaFp0XCzqV" alt="">
+                <img class="crocoAvatar" src="https://psv4.userapi.com/c536236/u176748061/docs/d2/a69add4f7f52/Ellipse_46.png?extra=35PzKbVF_J5-0Cj3JCs2Zf28ytREeraCD7mc3rDbXjbSS_w0FvljVYXKp1AQCSYsHM-0wbGmzxTJ62Enoh005F1_y_CGvClfBttCus-hjMmbC2hYCxf50JeJRvcaSBtch1Ffzo3pHFvzWngXjh2xox_s" alt="">
+            </div>
+            <div class="gorillaOnMap">
+                <img class="gorillaMark" src="https://psv4.userapi.com/c536132/u176748061/docs/d41/20c2761e8674/mapMark.png?extra=W3pct3stQRWp9cXYAdHR7RoWGQykGwkjFLbc33g2PjNfmuBEHa6kgvr8iRmt0hvFHbCbXGV_6v0KmiKAePIpNSwdHUXo8C8rP_NM8GJC5-xqvb6URdvUBWoImPDZDitzQl8GcyvCx8oqlrpaFp0XCzqV" alt="">
+                <img class="gorillaAvatar" src="https://psv4.userapi.com/c532036/u176748061/docs/d51/10b6e3060ce4/Ellipse_46.png?extra=QYz1fAqdQQ0AuwCw0OSwX4VSmTp_5oNzY_cHNm7cYv7RSHy3F7e1JBKhCHLAVcQ5vxmnBTsrPG5SwUjNstvoWrAeXhMfnM0dQJLHoGsS_32xYH3RvXj_M9CcnOe16CbkUdfeDYWH-XG9TvwBn25H3u75" alt="">
+            </div>
+            <div class="pandaOnMap">
+                <img class="pandaMark" src="https://psv4.userapi.com/c536132/u176748061/docs/d41/20c2761e8674/mapMark.png?extra=W3pct3stQRWp9cXYAdHR7RoWGQykGwkjFLbc33g2PjNfmuBEHa6kgvr8iRmt0hvFHbCbXGV_6v0KmiKAePIpNSwdHUXo8C8rP_NM8GJC5-xqvb6URdvUBWoImPDZDitzQl8GcyvCx8oqlrpaFp0XCzqV" alt="">
+                <img class="pandaAvatar" src="https://psv4.userapi.com/c537232/u176748061/docs/d23/170e3615ea14/Ellipse_53.png?extra=MiIBvETYsFq__11HsQQfrjBgf6srbBeBHdOIoYV3giGaSRD3hkIzPtT5r2hFDagej1NlxP0OsYPfnOnGCTMWoLkmu98D5ElV3sAhUisg-Dp2RhmMAT1nG6LHohqB8U0Y3ncfSftvA7QYqz4KFWvy-Zw5" alt="">
+            </div>
+            <div class="lionOnMap">
+                <img class="lionMark" src="https://psv4.userapi.com/c536132/u176748061/docs/d41/20c2761e8674/mapMark.png?extra=W3pct3stQRWp9cXYAdHR7RoWGQykGwkjFLbc33g2PjNfmuBEHa6kgvr8iRmt0hvFHbCbXGV_6v0KmiKAePIpNSwdHUXo8C8rP_NM8GJC5-xqvb6URdvUBWoImPDZDitzQl8GcyvCx8oqlrpaFp0XCzqV" alt="">
+                <img class="lionAvatar" src="https://psv4.userapi.com/c536236/u176748061/docs/d12/0111e44b9673/Ellipse_56.png?extra=jtp1kZuQ4hiWL0FYTWiDSMbz6jNeNjp0RBhVo4GTxUaYAv5_eCiu59OEuriAowxO4AgXAMKzV1OgTDCWuPHrWIoOO-Au0zPYC5ze3gBuOYtqTy67J3MHrclGHln5NX92fBey2H4zFzzBXE59Pb_FjP1s" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <a name="contacts"></a>
+    <div class="footContainer">
+        <div class="footLogo1">zoo</div>
+        <div class="footLogo2">online</div>
+        <div class="contactsForm">
+            <div class="contactUs">Contact us</div>
+            <form class="formCont" action="">
+                <input class="name" type="text" placeholder="Name" required>
+                <input class="email" type="email" placeholder="Email" required>
+                <fieldset>
+                    <legend class="messageName">Please enter your message</legend>
+                    <textarea name="message" maxlength="280" required ></textarea>
+                </fieldset>
+                <input type="checkbox" class="check1" id="check1" required>
+                <label class="checkLabel" for="check1">I agree to the processing of Personal Data</label>
+                <button class="submit" type="submit">
+                    SEND
+                    <img class="submitArrow" src="assets/Arrow 4.svg" alt="">
+                </button>
+            </form>
+            <div class="footerLine"></div>
+            <div class="noora">©Noora Sagnayeva</div>
+            <div class="rsschool">©RSSchool and ©Yem Digital - 2021</div>
+        </div>
+
+
+        <ul class="footMenu">
+            <li><a class="footAbout" href="file:///D:/RS-SCHOOL/online-zoo/index.html">About</a></li>
+            <li><a class="footZoos" href="file:///D:/RS-SCHOOL/online-zoo/panda.html">Zoos</a></li>
+            <li><a class="footMap" href="file:///D:/RS-SCHOOL/online-zoo/map.html">Map</a></li>
+            <li><a class="footDesign" href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp?node-id=0%3A1">Design</a></li>
+        </ul>
+        <button class="volunteers">donate for volunteers</button>
+        <div class="onlineCenter">ZOO Online Centre</div>
+        <address>132, Address District, Street</address>
+        <div class="time">Open Daily 10:00 am - 5:00 pm</div>
+        <ul>
+            <li><a class="tel" href="">T(702) 163-3433</a></li>
+            <li><a class="mail" href="zoo.online@gmail.com">zoo.online@gmail.com</a></li>
+        </ul>
+        <ul class="socialNetworks2">
+            <li><a href="https://www.instagram.com/"><img class="instagram2" src="assets/instagram 1.svg" alt=""></a></li>
+            <li><a href="https://www.twitter.com"><img class="twitter2" src="assets/Twitter.svg" alt=""></a></li>
+            <li><a href="https://www.youtube.com"><img class="youtube2" src="assets/YouTube.svg" alt=""></a></li>
+            <li><a href="https://www.vk.com"><img class="vk2" src="assets/Vk.svg" alt=""></a></li>
+        </ul>
+    </div>
+    <a href="#contacts"></a>
+</footer>
+</body>
+</html>

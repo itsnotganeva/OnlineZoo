@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Zoo</title>
+    <link rel="stylesheet" href="css/pandaStyle.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            position: relative;
+            width: 1920px;
+            height: 1755px;
+            background: #FBFBFB;
+            padding: 0;
+            margin: 0;
+        }
+        header{
+            position: absolute;
+            width: 1920px;
+            height: 94px;
+            left: 0px;
+            top: 0px;
+
+            background: #FFFFFF;
+            box-shadow: 0px 4px 8px rgba(44, 101, 77, 0.08);
+        }
+        .logo1 {
+            position: absolute;
+            width: 59px;
+            height: 42px;
+            left: 149px;
+            top: 16px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 42px;
+            color: #333333;
+        }
+        .logo2 {
+            position: absolute;
+            width: 58px;
+            height: 21px;
+            left: 150px;
+            top: 49px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.08em;
+            color: #333333;
+        }
+        .about {
+            position: absolute;
+            width: 43px;
+            height: 19px;
+            left: 694px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+        }
+        .zoos {
+            position: absolute;
+            width: 36px;
+            height: 19px;
+            left: 881px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+        }
+        .contacts {
+            position: absolute;
+            width: 95px;
+            height: 19px;
+            left: 1039px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+        }
+        .new {
+            position: absolute;
+            width: 97px;
+            height: 19px;
+            left: 1261px;
+            top: 39px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 19px;
+            line-height: 19px;
+            color: #333333;
+            text-decoration: underline;
+            pointer-events: none;
+        }
+        li {
+            list-style-type: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .zoo {
+            position: absolute;
+            width: 1920px;
+            height: 715px;
+            left: 0px;
+            top: 94px;
+        }
+        .sideBar {
+            width: 200px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            margin-top: 75px;
+            margin-left: 25px;
+        }
+        .scroll {
+            width: 200px;
+        }
+        .watchVideo {
+            position: absolute;
+            width: 790px;
+            height: 645px;
+            left: 360px;
+            top: 156px;
+        }
+        iframe {
+            border-radius: 5px;
+        }
+        .info {
+            position: absolute;
+            width: 194px;
+            height: 55px;
+            left: 1180px;
+            top: 156px;
+        }
+        .population {
+            position: absolute;
+            width: 104px;
+            height: 23px;
+            left: 0px;
+            top: 0px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 23px;
+            color: #333333;
+        }
+        .first {
+            position: absolute;
+            width: 380px;
+            height: 34px;
+            left: 0px;
+            top: 21px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #4F4F4F;
+        }
+        .habitat {
+            position: absolute;
+            width: 72px;
+            height: 23px;
+            left: 0px;
+            top: 66px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 23px;
+            color: #333333;
+        }
+        .second {
+            position: absolute;
+            width: 380px;
+            height: 55px;
+            left: 0px;
+            top: 88px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #4F4F4F;
+        }
+        .diet {
+            position: absolute;
+            width: 43px;
+            height: 23px;
+            left: 0px;
+            top: 166px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 23px;
+            color: #333333;
+        }
+        .third {
+            position: absolute;
+            width: 380px;
+            height: 64px;
+            left: 0px;
+            top: 188px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #4F4F4F;
+        }
+        footer {
+            position: absolute;
+            width: 1920px;
+            height: 751px;
+            left: 0px;
+            top: 1004px;
+            background: #333333;
+        }
+        .footLogo1 {
+            position: absolute;
+            width: 59px;
+            height: 42px;
+            left: 150px;
+            top: 90px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 42px;
+            color: #FEFEFE;
+        }
+        .footLogo2 {
+            position: absolute;
+            width: 58px;
+            height: 21px;
+            left: 151px;
+            top: 123px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.08em;
+            color: #FEFEFE;
+        }
+        .contactUs {
+            position: absolute;
+            width: 97px;
+            height: 23px;
+            left: 151px;
+            top: 211px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 23px;
+            color: #FEFEFE;
+        }
+        .name {
+            position: absolute;
+            width: 383px;
+            height: 34px;
+            left: 151px;
+            top: 259px;
+            padding-left: 0px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #E0E0E0;
+            background: #333333;
+            border: none;
+            border-bottom: 1px solid #BDBDBD;
+        }
+        .email {
+            position: absolute;
+            width: 383px;
+            height: 34px;
+            left: 151px;
+            top: 305px;
+            padding-left: 0px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #E0E0E0;
+            background: #333333;
+
+            border: none;
+            border-bottom: 1px solid #BDBDBD;
+        }
+        ::placeholder {
+            color: #E0E0E0;
+        }
+        .footAbout {
+            position: absolute;
+            width: 43px;
+            height: 19px;
+            left: 975px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .footZoos {
+            position: absolute;
+            width: 36px;
+            height: 119px;
+            left: 1091px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .footMap {
+            position: absolute;
+            width: 32px;
+            height: 19px;
+            left: 1200px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .footDesign {
+            position: absolute;
+            width: 50px;
+            height: 19px;
+            left: 1305px;
+            top: 119px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FEFEFE;
+        }
+        .volunteers {
+            position: absolute;
+            width: 275px;
+            height: 55px;
+            left: 1495px;
+            top: 99px;
+            cursor: pointer;
+            background: linear-gradient(106.89deg, #4BD8B5 -14.32%, #49D6DF 100.68%);
+            border-radius: 3px;
+            border: none;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+        .volunteers:hover {
+            background: linear-gradient(106.89deg, #4BD8B5 100.68%, #49D6DF -14.32%);
+        }
+        .onlineCenter {
+            position: absolute;
+            width: 136px;
+            height: 16px;
+            left: 975px;
+            top: 211px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 16px;
+            text-transform: uppercase;
+            color: #FEFEFE;
+        }
+        address {
+            position: absolute;
+            width: 173px;
+            height: 16px;
+            left: 975px;
+            top: 262px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .time {
+            position: absolute;
+            width: 190px;
+            height: 16px;
+            left: 975px;
+            top: 283px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .tel {
+            position: absolute;
+            width: 104px;
+            height: 16px;
+            left: 975px;
+            top: 319px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .mail {
+            position: absolute;
+            width: 143px;
+            height: 16px;
+            left: 975px;
+            top: 340px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FEFEFE;
+        }
+        .instagram2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 975px;
+            top: 376px;
+        }
+        .twitter2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 1010px;
+            top: 378px;
+        }
+        .vk2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 1045px;
+            top: 380px;
+        }
+        .youtube2 {
+            position: absolute;
+            width: 20px;
+            height: 20x;
+            left: 1080px;
+            top: 379px;
+        }
+        fieldset {
+            position: absolute;
+            width: 383px;
+            height: 121px;
+            left: 149px;
+            top: 362px;
+
+            border: 1px solid #BDBDBD;
+            box-sizing: border-box;
+            border-radius: 3px;
+        }
+        legend {
+            margin-left: -7px;
+            padding-right: 6px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+
+            color: #BDBDBD;
+        }
+        textarea {
+            position: absolute;
+            left: 0px;
+            top: -1px;
+            width: 381px;
+            height: 105px;
+            background: #333333;
+            border: none;
+            resize: none;
+        }
+        textarea:focus
+        {
+            outline: none;
+            color: #FEFEFE;
+        }
+        .check1 {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            left: 148px;
+            top: 506px;
+            cursor: pointer;
+        }
+
+        .checkLabel {
+            position: absolute;
+            width: 224px;
+            height: 14px;
+            left: 171px;
+            top: 508px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            color: #BDBDBD;
+            cursor: pointer;
+        }
+        .submit {
+            position: absolute;
+            left: 404px;
+            top: 542px;
+            text-decoration: none;
+            border: none;
+            background: #333333;
+            cursor: pointer;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+
+            /* base */
+
+            color: #FEFEFE;
+
+        }
+        .submitArrow {
+            margin-top: 0px;
+            padding-left: 20px;
+        }
+        .footerLine {
+            position: absolute;
+            width: 1620.04px;
+            height: 0px;
+            left: 152px;
+            top: 618px;
+            border: 0.5px solid #FEFEFE;
+        }
+        .noora {
+            position: absolute;
+            width: 103px;
+            height: 14px;
+            left: 151px;
+            top: 646px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            color: #BDBDBD;
+        }
+        .rsschool {
+            position: absolute;
+            width: 193px;
+            height: 14px;
+            left: 152px;
+            top: 665px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            color: #BDBDBD;
+        }
+        .animalName{
+            position: absolute;
+            width: 346px;
+            height: 56px;
+            left: 376px;
+            top: 80px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 56px;
+            color: #333333;
+        }
+        .edit {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 23px;
+            color: #333333;
+            text-decoration: underline;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        .delete {
+            position: absolute;
+            width: 121px;
+            height: 43px;
+            left: 136px;
+            top: 400px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 23px;
+            color: #333333;
+            text-decoration: underline;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        .createForm {
+            position: absolute;
+            left: 579px;
+            top: 97px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 56px;
+            color: #333333;
+            border: #333333 2px solid;
+            padding: 33px;
+        }
+        .createForm input {
+            width:380px ;
+            height: 40px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 56px;
+            color: #333333;
+        }
+        .inputField {
+            margin: -21px;
+        }
+        #edit {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 23px;
+            color: #333333;
+            text-decoration: underline;
+            border: none;
+            background: none;
+            cursor: pointer;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <a href="http://localhost:8080/animals">
+            <div class="logo1">zoo</div>
+            <div class="logo2">online</div>
+        </a>
+        <ul class="headMenu">
+            <li><a class="about" href="http://localhost:8080/animals">Animals</a></li>
+            <li><a class="zoos" href="#">Zoos</a></li>
+            <li><a class="contacts" href="#contacts">Contact Us</a></li>
+            <li><a class="new" href="/animals/new">Create new</a></li>
+        </ul>
+    </div>
+</header>
+<div class="zoo">
+    <form class="createForm" th:method="POST" th:action="@{/animals}" th:object="${animal}">
+        <div class="inputField">
+            <label for="name">Enter animal name:</label>
+            <input type="text" th:field="*{animalName}" id="name">
+        </div>
+        <br>
+        <div class="inputField">
+            <label for="animalId">Enter id of animal:</label>
+            <input type="text" th:field="*{animalId}" id="animalId">
+        </div>
+        <br>
+        <div class="inputField">
+            <label for="categoryId">Enter id of category:</label>
+            <input type="text" th:field="*{categoryId}" id="categoryId">
+        </div>
+        <br>
+        <div class="inputField">
+            <label for="population">Enter population:</label>
+            <input type="text" th:field="*{population}" id="population">
+        </div>
+        <br>
+        <div class="inputField">
+            <label for="habitat">Enter habitat:</label>
+            <input type="text" th:field="*{habitat}" id="habitat">
+        </div>
+        <br>
+        <div class="inputField">
+            <label for="diet">Enter diet:</label>
+            <input type="text" th:field="*{diet}" id="diet">
+        </div>
+        <br>
+        <div class="inputField">
+            <label for="imagePath">Enter image path:</label>
+            <input type="text" th:field="*{imagePath}" id="imagePath">
+        </div>
+        <br>
+        <div class="inputField">
+            <label for="videoLink">Enter video link:</label>
+            <input type="text" th:field="*{videoLink}" id="videoLink">
+        </div>
+        <br>
+        <input id="edit" type="submit" value="CREATE">
+    </form>
+</div>
+<footer>
+    <a name="contacts"></a>
+    <div class="footContainer">
+        <div class="footLogo1">zoo</div>
+        <div class="footLogo2">online</div>
+        <div class="contactsForm">
+            <div class="contactUs">Contact us</div>
+            <form class="formCont" action="">
+                <input class="name" type="text" placeholder="Name" required>
+                <input class="email" type="email" placeholder="Email" required>
+                <fieldset>
+                    <legend class="messageName">Please enter your message</legend>
+                    <textarea name="message" maxlength="280" required ></textarea>
+                </fieldset>
+                <input type="checkbox" class="check1" id="check1" required>
+                <label class="checkLabel" for="check1">I agree to the processing of Personal Data</label>
+                <button class="submit" type="submit">
+                    SEND
+                    <img class="submitArrow" src="assets/Arrow 4.svg" alt="">
+                </button>
+            </form>
+            <div class="footerLine"></div>
+            <div class="noora">©Noora Sagnayeva</div>
+            <div class="rsschool">©RSSchool and ©Yem Digital - 2021</div>
+        </div>
+
+
+        <ul class="footMenu">
+            <li><a class="footAbout" href="file:///D:/RS-SCHOOL/online-zoo/index.html">About</a></li>
+            <li><a class="footZoos" href="file:///D:/RS-SCHOOL/online-zoo/panda.html">Zoos</a></li>
+            <li><a class="footMap" href="file:///D:/RS-SCHOOL/online-zoo/map.html">Map</a></li>
+            <li><a class="footDesign" href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp?node-id=0%3A1">Design</a></li>
+        </ul>
+        <button class="volunteers">donate for volunteers</button>
+        <div class="onlineCenter">ZOO Online Centre</div>
+        <address>132, Address District, Street</address>
+        <div class="time">Open Daily 10:00 am - 5:00 pm</div>
+        <ul>
+            <li><a class="tel" href="">T(702) 163-3433</a></li>
+            <li><a class="mail" href="zoo.online@gmail.com">zoo.online@gmail.com</a></li>
+        </ul>
+        <ul class="socialNetworks2">
+            <li><a href="https://www.instagram.com/"><img class="instagram2" src="assets/instagram 1.svg" alt=""></a></li>
+            <li><a href="https://www.twitter.com"><img class="twitter2" src="assets/Twitter.svg" alt=""></a></li>
+            <li><a href="https://www.youtube.com"><img class="youtube2" src="assets/YouTube.svg" alt=""></a></li>
+            <li><a href="https://www.vk.com"><img class="vk2" src="assets/Vk.svg" alt=""></a></li>
+        </ul>
+    </div>
+    <a href="#contacts"></a>
+</footer>
+</body>
+</html>
